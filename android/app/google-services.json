@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "928293499249",
+    "project_id": "tonghop01-65a82",
+    "storage_bucket": "tonghop01-65a82.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:928293499249:android:63de4ae7d69b6ce9d0c6d0",
+        "android_client_info": {
+          "package_name": "com.example.tonghop_01"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASupS0w5YkoyaxPV_mDM9G07-XjZN4sCs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
