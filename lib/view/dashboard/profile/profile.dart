@@ -163,7 +163,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               auth.signOut().then((value) {
                                 SessionController().userId = '';
                                 print('logout đã hoàn thành');
-                                Navigator.pushNamedAndRemoveUntil(context, RouteName.loginView, (route) => false);
+
+
                               });
                             }, icon: Icon(Icons.logout),
                             )
