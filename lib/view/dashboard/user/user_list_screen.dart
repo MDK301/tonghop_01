@@ -27,7 +27,7 @@ class _UserListScreenState extends State<UserListScreen> {
           child: FirebaseAnimatedList(
         query: ref.orderByChild('uid'),
         itemBuilder: (context, snapshot, animation, index) {
-          if (SessionController().userId.toString() ==
+          if (SessionController().userIdRealtime.toString() ==
               snapshot.child('uid').value.toString()) {
             return Container();
           } else {

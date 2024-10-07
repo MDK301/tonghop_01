@@ -11,7 +11,7 @@ class Splash_Services{
     FirebaseAuth auth = FirebaseAuth.instance;
 final user=auth.currentUser;
 if(user!=null){
-  SessionController().userId=user.uid.toString();
+  SessionController().userIdRealtime=user.uid.toString();
   Timer(const Duration(seconds:3),()=>Navigator.pushNamed(context,RouteName.dashboardScreen));
 
 }else{

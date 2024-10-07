@@ -25,7 +25,7 @@ class LoginController with ChangeNotifier{
       auth.signInWithEmailAndPassword(  email: email, password: password)
           .then((value) {
 
-        SessionController().userId=value.user!.uid.toString();
+        SessionController().userIdRealtime=value.user!.uid.toString();
 
         setLoading(false);
         Navigator.pushNamed(context, RouteName.dashboardScreen);

@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:tonghop_01/view/dashboard/profile/profile.dart';
@@ -13,6 +15,32 @@ class DashBoard extends StatefulWidget {
 }
 
 class _DashBoardState extends State<DashBoard> {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _firestore.collection('Users').doc(_auth.currentUser?.uid).update({
+      "status": "Online",
+    });
+  }
+  void setStatus(String status) async {
+    await _firestore.collection('users').doc(_auth.currentUser?.uid).update({
+      "status": status,
+    });
+  }
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      //online
+      setStatus("Online");
+    } else {
+      //offline
+      setStatus("Offline");
+    }
+  }
   final controller = PersistentTabController(initialIndex: 0);
 
   List<Widget> _buildScreen() {

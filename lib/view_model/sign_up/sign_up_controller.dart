@@ -31,7 +31,7 @@ class SignUpController with ChangeNotifier {
           email: email,
           password: password
       ).then((value) {
-        SessionController().userId=value.user!.uid.toString();
+        SessionController().userIdRealtime=value.user!.uid.toString();
 
         ref.child(value.user!.uid.toString()).set({
           'uid': value.user!.uid.toString(),
@@ -74,11 +74,13 @@ Future<User?> createAccount(String name, String email, String password) async {
     if (user != null) {
       print("Account create Succesfull");
       user.updateProfile(displayName: name);
-      await _firestore.collection("users").doc(_auth.currentUser?.uid).set({
-        "name": name,
-        "email": email,
-        "status": "Unavalible",
+      await _firestore.collection("Users").doc(_auth.currentUser?.uid).set({
         "uid": _auth.currentUser?.uid,
+        "email": email,
+        "userName": name,
+        "phone":"",
+        "profile":"",
+        "status": "Unavailable",
       });
       return user;
     } else {

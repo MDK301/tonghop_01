@@ -111,7 +111,7 @@ final timeStamp =DateTime.now().microsecondsSinceEpoch.toString();
 ref.child(timeStamp).set({
   'isSeen':false,
   'message': messageController.text.toString(),
-  'sender':SessionController().userId.toString(),
+  'sender':SessionController().userIdRealtime.toString(),
   'reciver':widget.reciverId,
   'type':'text',
   'time':timeStamp.toString(),
