@@ -63,3 +63,30 @@ class SignUpController with ChangeNotifier {
     }
   }
 }
+Future<User?> createAccount(String name, String email, String password) async {
+  FirebaseAuth _auth = FirebaseAuth.instance;
+  FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  try {
+    User? user = (await _auth.createUserWithEmailAndPassword(
+        email: email, password: password))
+        .user;
+    if (user != null) {
+      print("Account create Succesfull");
+      user.updateProfile(displayName: name);
+      await _firestore.collection("users").doc(_auth.currentUser?.uid).set({
+        "name": name,
+        "email": email,
+        "status": "Unavalible",
+        "uid": _auth.currentUser?.uid,
+      });
+      return user;
+    } else {
+      print("Account create Fail");
+      return user;
+    }
+  } catch (e) {
+    print(e);
+    return null;
+  }
+}

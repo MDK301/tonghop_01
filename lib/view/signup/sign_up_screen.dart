@@ -138,6 +138,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             provider.signUp(context,userNameController.text,
                                 emailController.text, passwordController.text);
                           }
+                          if (userNameController.text.isNotEmpty &&
+                              emailController.text.isNotEmpty &&
+                              passwordController.text.isNotEmpty) {
+                            createAccount(userNameController.text, emailController.text, passwordController.text).then((user) {
+                              if (user != null) {
+                                print("Account create Sucessfull");
+                              } else {
+                                print("Account create Failed");
+                              }
+                            });
+                          } else {
+                            print("Please fill all boxes!");
+                          }
                         },
                       ),
                       SizedBox(
