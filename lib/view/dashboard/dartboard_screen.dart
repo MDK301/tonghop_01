@@ -18,15 +18,16 @@ class _DashBoardState extends State<DashBoard> {
   List<Widget> _buildScreen() {
     return [
       SafeArea(child: Center(child: Text("Home",style: Theme.of(context).textTheme.headlineSmall,))),
-      SafeArea(child: Text("Chat")),
-      SafeArea(child: Text("Add")),
       UserListScreen(),
+      SafeArea(child: Text("add")),
+      SafeArea(child: Text("chat")),
       ProfileScreen()
     ];
   }
 
   List<PersistentBottomNavBarItem> _navBarItem() {
     return [
+      //home
       PersistentBottomNavBarItem(
           icon: Icon(
             Icons.home,
@@ -39,6 +40,7 @@ class _DashBoardState extends State<DashBoard> {
             color: Colors.grey,
           )),
 
+      //chat
       PersistentBottomNavBarItem(
           icon: Icon(
             Icons.chat,
@@ -50,6 +52,7 @@ class _DashBoardState extends State<DashBoard> {
             color: Colors.grey,
           )),
 
+      //add
       PersistentBottomNavBarItem(
           icon: Icon(
             Icons.add,
@@ -61,6 +64,7 @@ class _DashBoardState extends State<DashBoard> {
             color: Colors.grey,
           )),
 
+      //notification
       PersistentBottomNavBarItem(
           icon: Icon(
             Icons.notifications,
@@ -72,6 +76,7 @@ class _DashBoardState extends State<DashBoard> {
             color: Colors.grey,
           )),
 
+      //personal profile
       PersistentBottomNavBarItem(
           icon: Icon(
             Icons.person,

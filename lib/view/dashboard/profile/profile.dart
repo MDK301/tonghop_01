@@ -4,6 +4,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../main.dart';
 import '../../../res/color.dart';
 import '../../../utils/routes/route_name.dart';
 import '../../../view_model/profile/profile_controller.dart';
@@ -163,8 +164,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               auth.signOut().then((value) {
                                 SessionController().userId = '';
                                 print('logout đã hoàn thành');
-                                Navigator.pushNamedAndRemoveUntil(
-                                    context, 'login_screen', (route) => false);
+                                navigatorKey.currentState!.pushNamedAndRemoveUntil('login_screen', (route) => false);
                               });
                             }, icon: Icon(Icons.logout),
                             )

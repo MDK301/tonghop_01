@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,6 +11,7 @@ import '../services/session_manager.dart';
 class SignUpController with ChangeNotifier {
   FirebaseAuth auth = FirebaseAuth.instance;
   DatabaseReference ref = FirebaseDatabase.instance.ref().child('Users');
+  FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   bool _loading = false;
 
@@ -34,10 +36,10 @@ class SignUpController with ChangeNotifier {
         ref.child(value.user!.uid.toString()).set({
           'uid': value.user!.uid.toString(),
           'email': value.user!.email.toString(),
-          'onlineStatus': 'noOne',
           'userName': username,
           'phone': '',
           'profile': '',
+
         }).then((value) {
           setLoading(false);
           Navigator.pushNamed(context, RouteName.dashboardScreen);
@@ -45,7 +47,13 @@ class SignUpController with ChangeNotifier {
           setLoading(false);
           Utils.toastMessage("user created successfully");
         });
-      }).onError((error, stackTrace) {
+      }
+
+
+
+
+
+      ).onError((error, stackTrace) {
         Utils.toastMessage(error.toString());
         setLoading(false);
       });

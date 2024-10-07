@@ -6,6 +6,8 @@ import 'package:tonghop_01/utils/routes/routes.dart';
 import 'package:tonghop_01/view/login/login_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+final GlobalKey<NavigatorState>navigatorKey = GlobalKey<NavigatorState>();
+
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -21,6 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: navigatorKey,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: AppColors.primaryMaterialColor,
